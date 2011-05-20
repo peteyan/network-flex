@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="955"
+			   minHeight="600">
+
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		.tabBar
+		{	
+			firstButtonStyleName: "tabStyle";
+			tabStyleName: "tabStyle";
+			lastButtonStyleName: "tabStyle";
+			color: #4C5F6C;
+			horizontalGap: -20;
+			selectedTabTextStyleName: tabBarSelectedTabText;
+		}
+		
+		.tabStyle {
+			disabledSkin: Embed(source="com/hongguan/framework/assets/skin/Tab_disabledSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			downSkin: Embed(source="com/hongguan/framework/assets/skin/Tab_downSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			overSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="30");
+			selectedDisabledSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_disabledSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			selectedDownSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			selectedOverSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			selectedUpSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			upSkin: Embed(source="com/hongguan/framework/assets/skin/Tab_upSkin.png",
+				scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+			
+			tabHeight:45;
+			
+			fontFamily: 黑体;
+			color: #ffffff;
+			fontSize: 14;
+			textRollOverColor: #ffffff;
+		}
+
+		
+		.tabBarSelectedTabText
+		{
+			color: #ffffff;
+		}
+		
+		.wireless_can
+		{
+			borderSkin: Embed(source="/com/hongguan/framework/assets/skin/tab_img.png");
+		}
+	</fx:Style>
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+			import com.hongguan.util.IconUtil;
+		]]>
+	</fx:Script>
+	
+	<s:BitmapImage source="{SysIconUtil.default_img}" width="100%" height="100%"/>
+	
+	<s:Group>
+		<mx:Image source="/com/hongguan/framework/assets/skin/tab_img_left.png"/>
+		<mx:TabNavigator paddingLeft="-21" borderVisible="false" backgroundAlpha="0" paddingTop="0" styleName="tabBar" id="tn"  width="1007" height="77"  useHandCursor="true" buttonMode="true" bottom="10" horizontalCenter="0">
+			
+			<mx:Canvas label="无线网"  styleName="wireless_can" >
+			</mx:Canvas>
+			
+			<mx:Canvas label="核心网" >
+			</mx:Canvas>
+			
+			<mx:Canvas label="空间网" >
+			</mx:Canvas>
+			
+		</mx:TabNavigator>
+	</s:Group>
+	
+
+</s:Application>

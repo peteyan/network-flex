@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns="com.hongguan.framework.view.*"
+		 horizontalCenter="0"
+		 width="1047"
+		 height="78" >
+
+	<!--
+		 网络资源>>业资源功能Tab项切换
+	-->
+
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+			import com.hongguan.util.IconUtil;
+		]]>
+	</fx:Script>
+	
+	<s:BitmapImage source="{SysIconUtil.tab_img_left}" top="29" left="1"/>
+	
+	<TabNavigator left="19" height="77">
+		<mx:Canvas label="无线网"  styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="核心网" styleName="wireless_can" > 
+		</mx:Canvas>
+		
+		<mx:Canvas label="空间资源网" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="数据网" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="同步网" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="传输网" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="卫星网" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="GPRS系统" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="智能网" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="动力系统" styleName="wireless_can" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="WLAN系统" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="IMS系统" >
+		</mx:Canvas>
+		
+		<mx:Canvas label="集客" >
+		</mx:Canvas>
+	</TabNavigator>
+
+</s:Group>

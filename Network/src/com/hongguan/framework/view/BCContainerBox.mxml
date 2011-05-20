@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:mx="library://ns.adobe.com/flex/mx"
+				   borderColor="#C7C7C7">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.IVisualElement;
+			
+			private var _icon:Class;
+			
+			private var _rectH:int = 27;
+			
+			public function set content(value:IVisualElement):void
+			{
+				if(value == null) return;
+				
+				value.top = this.rectH;
+				
+				this.addElement(value);
+			}
+			
+			[Bindable]
+			public function get icon():Class
+			{
+				return _icon;
+			}
+
+			public function set icon(value:Class):void
+			{
+				_icon = value;
+			}
+
+			[Bindable]
+			public function get rectH():int
+			{
+				return _rectH;
+			}
+
+			public function set rectH(value:int):void
+			{
+				_rectH = value;
+			}
+
+
+		]]>
+	</fx:Script>
+	
+	<s:Rect width="100%" height="{rectH}" top="0" id="rect">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0xFDFDFD"/>
+				<s:GradientEntry color="0xEBEBEB"/>
+			</s:LinearGradient>	
+		</s:fill>
+	</s:Rect>
+	
+	<s:BitmapImage source="{icon}" top="8" left="8"/>
+	
+	<s:Label text="{this.name}" top="6" left="26" color="#5D5D5D" fontSize="13" fontWeight="bold" fontFamily="宋体"/>
+	
+</s:BorderContainer>

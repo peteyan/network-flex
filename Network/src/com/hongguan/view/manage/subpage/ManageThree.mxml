@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%"
+		 height="100%">
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+			
+			import mx.collections.ArrayCollection;
+			
+			[Bindable]
+			private var medalsAC:ArrayCollection = new ArrayCollection( [
+				{ Country: "资源拓扑", Gold: 35, Silver:39, Bronze: 29 },
+				{ Country: "业务开通", Gold: 32, Silver:17, Bronze: 14 },
+				{ Country: "网络连接", Gold: 27, Silver:27, Bronze: 38 },
+				{ Country: "统计分析", Gold: 35, Silver:39, Bronze: 29 },
+				{ Country: "基础功能", Gold: 32, Silver:17, Bronze: 14 }
+			]);
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Define custom colors for use as fills. -->
+		<mx:SolidColor id="sc1" color="0xCCCCCC" alpha=".6"/>
+		
+		<!-- Define custom Strokes for the columns. -->
+		<s:SolidColorStroke id="s1" color="0xCCCCCC" weight="2"/>	
+		
+	</fx:Declarations>
+	
+	
+	<!--背景颜色-->
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0xF0F0F0"/>
+				<s:GradientEntry color="0xFFFFFF"/>
+			</s:LinearGradient>	
+		</s:fill>
+	</s:Rect>
+	
+	<!--中间图标-->
+	<s:HGroup width="100%" top="10" height="90">
+		
+		<s:VGroup height="100%" width="20%" horizontalAlign="center">
+			<s:BitmapImage source="{SysIconUtil.manage_GIS}" verticalCenter="0"/>
+			<s:Label text="资源拓扑/GIS" fontFamily="宋体" fontWeight="bold" fontSize="12" verticalCenter="0"/>
+		</s:VGroup>
+		
+		<s:VGroup height="100%" width="20%" horizontalAlign="center">
+			<s:BitmapImage source="{SysIconUtil.manage_business}" verticalCenter="0"/>
+			<s:Label text="业务开通" fontFamily="宋体" fontWeight="bold"  fontSize="12" verticalCenter="0"/>
+		</s:VGroup>
+		
+		<s:VGroup height="100%" width="20%" horizontalAlign="center">
+			<s:BitmapImage source="{SysIconUtil.manage_network}" verticalCenter="0"/>
+			<s:Label text="网络连接" fontFamily="宋体" fontWeight="bold"  fontSize="12" verticalCenter="0"/>
+		</s:VGroup>
+		
+		<s:VGroup height="100%" width="20%" horizontalAlign="center">
+			<s:BitmapImage source="{SysIconUtil.manage_statistics}" verticalCenter="0"/>
+			<s:Label text="统计分析" fontFamily="宋体" fontWeight="bold"  fontSize="12" verticalCenter="0"/>
+		</s:VGroup>
+		
+		<s:VGroup height="100%" width="20%" horizontalAlign="center">
+			<s:BitmapImage source="{SysIconUtil.manage_base}" verticalCenter="0"/>
+			<s:Label text="基础功能" fontFamily="宋体" fontWeight="bold"  fontSize="12" verticalCenter="0"/>
+		</s:VGroup>
+		
+	</s:HGroup>
+
+	<!--图表显示-->
+	<mx:ColumnChart id="column" paddingLeft="5"  fontSize="13" paddingRight="5" 
+					showDataTips="true" dataProvider="{medalsAC}" bottom="0" top="80" width="100%">                
+		
+		<mx:horizontalAxis>
+			<mx:CategoryAxis categoryField="Country"/>
+		</mx:horizontalAxis>
+		
+		<mx:series>
+			<mx:ColumnSeries xField="Country" yField="Gold" displayName="Gold" fill="{sc1}"	stroke="{s1}"/>
+		</mx:series>
+	</mx:ColumnChart>
+	
+</s:Group>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  xmlns:components="com.hongguan.view.business.components.*"
+		  creationComplete="group1_creationCompleteHandler(event)"
+		  gap="0"
+		  width="25%"
+		  height="100%"
+		  paddingBottom="2" xmlns:components1="com.hongguan.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			private var _arrData:Array;
+			
+			private var _minHeightLabel:Number = 23;
+
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				this.initColumn(this.arrData);
+			}
+			
+			public function initColumn(value:Array = null):void
+			{
+				if(value== null || value.length == 0) return;
+				
+				this.title.initContent(value[0]);
+				
+				for(var i:int = 1; i<value.length; i++)
+				{
+					var label:ContentLabel = new ContentLabel();
+					label.title = value[i];
+					label.minHeight = minHeightLabel;
+					
+					if (i % 2 == 0)
+					{
+						label.setStyle("backgroundColor","#2C3942");
+					}
+					
+					this.addElement(label);
+				}
+			}
+
+			public function get minHeightLabel():Number
+			{
+				return _minHeightLabel;
+			}
+
+			public function set minHeightLabel(value:Number):void
+			{
+				_minHeightLabel = value;
+			}
+			
+			[Bindable]
+			public function get arrData():Array
+			{
+				return _arrData;
+			}
+			
+			public function set arrData(value:Array):void
+			{
+				_arrData = value;
+			}
+			
+
+		]]>
+	</fx:Script>
+	
+	<components1:ContentTitle title="{arrData[0]}" id="title"/>
+	
+</s:VGroup>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  xmlns:components="com.hongguan.view.business.components.*"
+		  creationComplete="vgroup1_creationCompleteHandler(event)"
+		  width="100%"
+		  gap="2"
+		  height="100%">
+
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.components.Column;
+			import com.hongguan.components.ContentTitle;
+			
+			import mx.events.FlexEvent;
+
+			protected function vgroup1_creationCompleteHandler(event:FlexEvent):void
+			{
+				this.initRowTitle();
+			}
+			
+			private function initRowTitle():void
+			{		
+				var statistics1:Column = new Column();
+				statistics1.arrData =  ["      地区      ","在办工单","超时工单","已归档工单","工单总量"];
+				this.addElement(statistics1);
+				
+				var statistics2:Column = new Column();
+				statistics2.arrData =  ["A","1","2","3","4"];
+				this.addElement(statistics2);
+				
+				var statistics3:Column = new Column();
+				statistics3.arrData = ["B","1","2","3","4"];
+				this.addElement(statistics3);
+				
+				var statistics4:Column = new Column();
+				statistics4.arrData =  ["C","1","2","3","4"];
+				this.addElement(statistics4);
+				
+				var statistics5:Column = new Column();
+				statistics5.arrData =   ["D","1","2","3","4"];
+				this.addElement(statistics5);
+				
+				var statistics6:Column = new Column();
+				statistics6.arrData =   ["E","1","2","3","4"];
+				this.addElement(statistics6);
+				
+				var statistics7:Column = new Column();
+				statistics7.arrData =  ["F","1","2","3","4"];
+				this.addElement(statistics7);
+				
+				var statistics8:Column = new Column();
+				statistics8.arrData = ["G","1","2","3","4"];
+				this.addElement(statistics8);
+				
+				var statistics9:Column = new Column();
+				statistics9.arrData =["H","1","2","3","4"];
+				this.addElement(statistics9);
+				
+			}
+
+		]]>
+	</fx:Script>
+
+</s:HGroup>

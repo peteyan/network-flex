@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600">
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			
+			protected function image1_mouseOutHandler(event:MouseEvent):void
+			{
+				var img:Image =  event.currentTarget as Image;
+				img.useHandCursor = false;
+				img.buttonMode = false;
+			}
+
+
+			protected function image1_mouseMoveHandler(event:MouseEvent):void
+			{
+				var img:Image =  event.currentTarget as Image;
+				if(img.mouseY >=33)
+				{
+					img.useHandCursor = false;
+					img.buttonMode = false;
+				}
+				else
+				{
+					img.useHandCursor = true;
+					img.buttonMode = true;
+				}
+			}
+			
+			protected function click_Handler(event:MouseEvent):void
+			{
+				var cnavas:Canvas =  event.currentTarget as Canvas;
+				var currName:String = cnavas.name;
+				
+				switch(currName)
+				{
+					case "无线网" :
+						this.vs.selectedIndex = 0;
+						break;
+					
+					case "核心资源" :
+						this.vs.selectedIndex = 1;
+						break;
+					
+					default :
+						break;
+				}
+			}
+
+
+		]]>
+	</fx:Script>
+	
+	<mx:ViewStack selectedIndex="0" width="1007" height="77" id="vs">
+		<mx:Canvas id="wireless" name="无线网" width="1007" height="77">
+			<mx:Image source="assets/image/wireless.png" />
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true"  height="22" width="60" click="click_Handler(event)" top="10" left="90"   name="核心资源"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="70" click="click_Handler(event)" top="10" left="150" name="空间资源"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="65" click="click_Handler(event)" top="10" left="220" name="数据网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="285" name="同步网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="345" name="传输网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="405" name="卫星网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="465" name="传输网2"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="525" name="卫星网2"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="70" click="click_Handler(event)" top="10" left="585" name="GPRS系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="645" name="智能网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="85" click="click_Handler(event)" top="10" left="705" name="动力系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="95" click="click_Handler(event)" top="10" left="765" name="WLAN系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="65" click="click_Handler(event)" top="10" left="860" name="IMS系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="70" click="click_Handler(event)" top="10" left="920" name="集客"/>
+		</mx:Canvas> 
+		<mx:Canvas id="core" name="核心网">
+			<mx:Image source="assets/image/core.png"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="50" click="click_Handler(event)" top="10" left="25"   name="无线网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="70" click="click_Handler(event)" top="10" left="150" name="空间资源"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="65" click="click_Handler(event)" top="10" left="220" name="数据网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="285" name="同步网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="345" name="传输网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="405" name="卫星网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="465" name="传输网2"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="525" name="卫星网2"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="70" click="click_Handler(event)" top="10" left="585" name="GPRS系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="60" click="click_Handler(event)" top="10" left="645" name="智能网"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="85" click="click_Handler(event)" top="10" left="705" name="动力系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="95" click="click_Handler(event)" top="10" left="765" name="WLAN系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="65" click="click_Handler(event)" top="10" left="860" name="IMS系统"/>
+			<mx:Canvas backgroundColor="#FF0000" alpha="0" useHandCursor="true" buttonMode="true" height="22" width="70" click="click_Handler(event)" top="10" left="920" name="集客"/>
+		</mx:Canvas>
+	</mx:ViewStack>
+	
+</s:Application>

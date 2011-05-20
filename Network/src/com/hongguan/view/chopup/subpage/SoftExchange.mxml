@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009"
+	xmlns:s="library://ns.adobe.com/flex/spark"
+	xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:components="com.hongguan.components.*"
+	width="100%" 
+	height="100%"
+	creationComplete="vgroup1_creationCompleteHandler(event)">
+	
+
+		<fx:Script>
+			<![CDATA[
+				import com.hongguan.components.Column;
+				import com.hongguan.util.json.JSON;
+				import com.hongguan.view.business.BusinessMainView;
+				
+				import mx.controls.Alert;
+				import mx.events.FlexEvent;
+				import mx.rpc.events.FaultEvent;
+				import mx.rpc.events.ResultEvent;
+				/**父页面*/
+				private var businessMainView:BusinessMainView;
+				
+				protected function vgroup1_creationCompleteHandler(event:FlexEvent):void
+				{
+					//this.initRowTitle();
+					//businessMainView = this.parent as BusinessMainView;
+					//Alert.show("come in!  1");
+					ROchopupService.getAllCutoverSoftSwitchNum();
+					//Alert.show("come in! 2");
+				}
+				
+				protected function hgroup1_initializeHandler(event:FlexEvent):void
+				{
+					this.initData();
+				}
+				
+				/**
+				 * 后台查询初始数据
+				 */
+				private function initData():void
+				{
+					
+					
+				}
+				
+				/**
+				 * 动态产生列，静态数据
+				 */
+				private function initRowTitle():void
+				{		
+
+					
+				}
+				
+				
+				/**
+				 * 获取集客当前客户规模数据列表 --success执行的方法
+				 */
+				private function getAllCutoverSoftSwitchNum_resultHandler(event:ResultEvent):void
+				{
+					//Alert.show("event.result--------="+event.result);
+					var rawArray:Array=JSON.decode(event.result as String) as Array;
+					//var array:Array=event.result  as Array;
+					//Alert.show("rawArray.length="+rawArray.length);
+					//var rawColumn:Array = [];
+					softExchangeGrid.dataProvider=rawArray;
+					
+					
+				}			
+				/**
+				 *  与后台交互，出现异常调用
+				 */
+				protected function faultHandler(event:FaultEvent):void
+				{
+					Alert.show("come in  faultHandler--------!"+event.message);
+					//				PopUpUtils.messageBox("连接异常，请与管理员联系","提示");
+				}
+				
+				
+			]]>
+		</fx:Script>
+		
+		<fx:Declarations>
+			<!--获取集客当前客户规模数据列表 -->
+			<s:RemoteObject id="ROchopupService" destination="chopupService" showBusyCursor="true" requestTimeout="30">
+				<s:method name="getAllCutoverSoftSwitchNum" result="getAllCutoverSoftSwitchNum_resultHandler(event)" fault="faultHandler(event)"/>
+			</s:RemoteObject>
+		</fx:Declarations>		
+		
+	<mx:DataGrid id="softExchangeGrid" 	width="100%"  styleName="dataGrid2" verticalScrollBarStyleName="myScrollBar"
+				 height="100%" verticalScrollPolicy="auto">		
+		<mx:columns>
+			<mx:DataGridColumn headerText="月份" dataField="month"  />
+			<mx:DataGridColumn headerText="新增入网软交换设备量" dataField="newsoftswitchnum"/>
+			<mx:DataGridColumn headerText="调整软交换设备量" dataField="modifysoftswitchnum"/>
+			<mx:DataGridColumn headerText="退网软交换设备量" dataField="delsoftswitchnum"/>
+		</mx:columns>
+	</mx:DataGrid>
+
+</mx:VBox>
+

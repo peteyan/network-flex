@@ -1,0 +1,173 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+.scstBtn
+{
+	up-skin: Embed(source="com/hongguan/framework/assets/image/scstBt.png");
+	over-skin: Embed(source="com/hongguan/framework/assets/image/scstBtOver.png");
+	down-skin: Embed(source="com/hongguan/framework/assets/image/scstBt.png");
+}
+
+.whiteLabel
+{
+	color:#FFFFFF;
+	font-size:13;
+	font-family:"黑体";
+}
+
+.chopup
+{
+	up-skin: Embed(source="com/hongguan/framework/assets/image/chopup.png");
+	over-skin: Embed(source="com/hongguan/framework/assets/image/chopup.png");
+	down-skin: Embed(source="com/hongguan/framework/assets/image/chopup.png");
+}
+.business
+{
+	up-skin: Embed(source="com/hongguan/framework/assets/image/business.png");
+	over-skin: Embed(source="com/hongguan/framework/assets/image/business.png");
+	down-skin: Embed(source="com/hongguan/framework/assets/image/business.png");
+}
+.topology
+{
+	up-skin: Embed(source="com/hongguan/framework/assets/image/topology.png");
+	over-skin: Embed(source="com/hongguan/framework/assets/image/topology.png");
+	down-skin: Embed(source="com/hongguan/framework/assets/image/topology.png");
+}
+.resource
+{
+	up-skin: Embed(source="com/hongguan/framework/assets/image/resource.png");
+	over-skin: Embed(source="com/hongguan/framework/assets/image/resource.png");
+	down-skin: Embed(source="com/hongguan/framework/assets/image/resource.png");
+}
+
+.tabBar
+{	
+	firstButtonStyleName: "tabStyle";
+	tabStyleName: "tabStyle";
+	lastButtonStyleName: "tabStyle";
+	color: #4C5F6C;
+	horizontalGap: -15;
+	tabWidth: 90;
+	selectedTabTextStyleName: tabBarSelectedTabText;
+}
+
+.tabStyle {
+	downSkin: Embed(source="com/hongguan/framework/assets/skin/Tab_downSkin.png",
+		scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+	overSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+		scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="30");
+	selectedDownSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+		scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+	selectedOverSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+		scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+	selectedUpSkin: Embed(source="com/hongguan/framework/assets/skin/TabSelected_upSkin.png",
+		scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+	upSkin: Embed(source="com/hongguan/framework/assets/skin/Tab_upSkin.png",
+		scaleGridLeft="4", scaleGridTop="4", scaleGridRight="49", scaleGridBottom="20");
+	
+	tabHeight:45;
+	
+	fontFamily: 黑体;
+	color: #ffffff;
+	fontSize: 13;
+	textRollOverColor: #ffffff;
+}
+
+
+.tabBarSelectedTabText
+{
+	color: #ffffff;
+}
+
+
+.dataGrid
+{
+
+	headerSeparatorSkin: Embed(source="com/hongguan/framework/assets/skin/DataGrid_columnResizeSkin.png");
+	headerBackgroundSkin:ClassReference("com.hongguan.framework.skin.DGHeaderBackgroundSkin");
+
+	selectionDuration: 1000;
+	
+	borderColor: #DFDFDF;
+	horizontalGridLineColor: #DFDFDF;
+	verticalGridLineColor: #DFDFDF;
+	borderVisible:false;
+
+}   
+
+
+.dataGrid2
+{			
+	headerSeparatorSkin: Embed(source="com/hongguan/framework/assets/skin/DataGrid_columnResizeSkin.png");
+	headerBackgroundSkin:ClassReference("com.hongguan.framework.skin.DGHeadSkin");			
+	selectionDuration: 1000;			
+	borderColor: #DFDFDF;
+	horizontalGridLineColor: #DFDFDF;
+	verticalGridLineColor: #DFDFDF;
+	borderVisible:false;
+	alternatingItemColors: #5E7D93, #2C3942;
+	color:#ABCCE1;
+	fontFamily:"黑体";
+	fontSize:12;
+	textAlign:center;
+	useRollOver: false;/*取消鼠标滑过事件*/
+	itemDoubleClick:false;
+	itemClick:false;
+
+}
+
+.dataGridStyles 
+{ 
+	textAlign: center; 
+} 
+
+
+
+
+.wireless_can
+{
+	borderSkin: Embed(source="/com/hongguan/framework/assets/skin/tab_img.png");
+}
+
+.myScrollBar
+{
+	/* 下面箭头 */
+	downArrowUpSkin:
+		Embed(source="/com/hongguan/framework/assets/image/down.gif");
+	downArrowOverSkin:
+		Embed(source="/com/hongguan/framework/assets/image/down.gif");
+	downArrowDownSkin:
+		Embed(source="/com/hongguan/framework/assets/image/down.gif");
+	
+	/* 上面箭头 */
+	upArrowUpSkin:
+		Embed(source="/com/hongguan/framework/assets/image/up.gif");
+	upArrowOverSkin:
+		Embed(source="/com/hongguan/framework/assets/image/up.gif");
+	upArrowDownSkin:
+		Embed(source="/com/hongguan/framework/assets/image/up.gif");
+	
+	/* 中间滚动条背景 */
+	thumbDownSkin:
+		Embed(source="/com/hongguan/framework/assets/image/scoll.png");
+		/*,scaleGridLeft="3", scaleGridTop="0",
+		scaleGridRight="8", scaleGridBottom="34");*/
+	thumbUpSkin:
+		Embed(source="/com/hongguan/framework/assets/image/scoll.png");
+		/*,scaleGridLeft="7", scaleGridTop="5",
+		scaleGridRight="8", scaleGridBottom="7");*/
+		/*scaleGridLeft="3", scaleGridTop="7",
+		scaleGridRight="8", scaleGridBottom="27");*/
+	thumbOverSkin:
+		Embed(source="/com/hongguan/framework/assets/image/scoll.png");
+		/*,scaleGridLeft="3", scaleGridTop="7",
+		scaleGridRight="8", scaleGridBottom="27");*/
+	
+	/* 中间背景 */
+	trackSkin:
+		Embed(source="/com/hongguan/framework/assets/image/beijing.jpg",
+		scaleGridLeft="7", scaleGridTop="4",
+		scaleGridRight="8", scaleGridBottom="6");
+
+}

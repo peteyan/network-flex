@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  xmlns:components="com.hongguan.view.business.components.*"
+		  creationComplete="group1_creationCompleteHandler(event)"
+		  gap="-2"
+		  width="20%"
+		  height="100%"
+		  paddingBottom="2" xmlns:components1="com.hongguan.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.components.ContentLabel;
+			import mx.events.FlexEvent;
+			
+			private var _arrData:Array;
+			
+			private var _minHeightLabel:Number = 26;
+
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				this.initColumn();
+			}
+			
+			private function initColumn():void
+			{
+				for(var i:int = 1; i<this.arrData.length; i++)
+				{
+					var label:ContentLabel = new ContentLabel();
+					label.title = this.arrData[i];
+					label.minHeight = minHeightLabel;
+					
+					this.addElement(label);
+				}
+			}
+
+			public function get minHeightLabel():Number
+			{
+				return _minHeightLabel;
+			}
+
+			public function set minHeightLabel(value:Number):void
+			{
+				_minHeightLabel = value;
+			}
+			
+			[Bindable]
+			public function get arrData():Array
+			{
+				return _arrData;
+			}
+			
+			public function set arrData(value:Array):void
+			{
+				_arrData = value;
+			}
+			
+
+		]]>
+	</fx:Script>
+	
+	<components1:ContentTitle title="{arrData[0]}"/>
+	
+</s:VGroup>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="bordercontainer1_creationCompleteHandler(event)"
+				   cornerRadius="10" 
+				   borderColor="#90C3DB"
+				   borderWeight="2">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+			
+			import mx.core.IVisualElement;
+			import mx.events.FlexEvent;
+			
+			import spark.components.HGroup;
+
+			
+			private var _contentTop:int = 26;
+			
+			private var _titleImg:Class = SysIconUtil.business_box_title;
+			
+			private var _titleImgTop:int = 0;
+			
+			private var _titleImgLeft:int = 0;
+			
+			private var _titleImgRight:int = 0;		
+			
+			private var _labelTop:int = 4;
+			
+			private var h:int = -11;
+
+//			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+//			{
+//				if(this.titleImgTop == this.h)
+//				{
+//					unscaledHeight = unscaledHeight - (h*-1);
+//				}
+//				
+//				super.updateDisplayList(unscaledWidth,unscaledHeight);		
+//			}
+
+			public function set content(value:IVisualElement):void
+			{
+				if(value == null) return;
+
+				value.top = contentTop;
+				
+				this.addElement(value);
+			}
+
+			[Bindable]
+			public function get contentTop():int
+			{
+				return _contentTop;
+			}
+
+			public function set contentTop(value:int):void
+			{
+				_contentTop = value;
+			}
+
+			[Bindable]
+			public function get titleImg():Class
+			{
+				return _titleImg;
+			}
+
+			public function set titleImg(value:Class):void
+			{
+				_titleImg = value;
+
+				if(value == SysIconUtil.cant)
+				{
+					this.titleImgLeft = -2;
+					this.titleImgRight = -2;
+					this.titleImgTop = this.h;
+					
+					this.labelTop = -4;
+				}
+			}
+
+			[Bindable]
+			public function get titleImgTop():int
+			{
+				return _titleImgTop;
+			}
+
+			public function set titleImgTop(value:int):void
+			{
+				_titleImgTop = value;
+			}
+
+			[Bindable]
+			public function get titleImgLeft():int
+			{
+				return _titleImgLeft;
+			}
+
+			public function set titleImgLeft(value:int):void
+			{
+				_titleImgLeft = value;
+			}
+
+			[Bindable]
+			public function get titleImgRight():int
+			{
+				return _titleImgRight;
+			}
+
+			public function set titleImgRight(value:int):void
+			{
+				_titleImgRight = value;
+			}
+
+			[Bindable]
+			public function get labelTop():int
+			{
+				return _labelTop;
+			}
+
+			public function set labelTop(value:int):void
+			{
+				_labelTop = value;
+			}
+
+
+			protected function bordercontainer1_creationCompleteHandler(event:FlexEvent):void
+			{
+				//(this.parent as HGroup).verticalAlign = "bottom";
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:backgroundFill>
+		<s:LinearGradient rotation="90">
+			<s:GradientEntry color="0x040B12" alpha="0.9"/>
+			<s:GradientEntry color="0x075170" alpha="0.9"/>
+		</s:LinearGradient>	
+	</s:backgroundFill>
+	
+	<s:BitmapImage source="{this.titleImg}" top="{this.titleImgTop}" left="{this.titleImgLeft}" right="{this.titleImgRight}"/>
+	
+	<s:Label text="{name}" color="#ABCCE1" fontSize="15" fontFamily="黑体" top="{this.labelTop}" left="15" id="_label">
+		<s:filters> 
+			<flash.filters:DropShadowFilter id='dropShadowFilter' xmlns:flash.filters='flash.filters.*' 
+											angle='45'
+											blurX='4' blurY='4'
+											distance='2'
+											alpha='0.71' color='#000000' 
+											knockout='false' quality='1'
+											strength='1' inner='false' hideObject='false'/>
+		</s:filters>
+	</s:Label>
+	
+	<!--<s:BitmapImage source="{SysIconUtil.business_box_title_2}" top="26" left="0" right="0"/>-->
+	
+</s:BorderContainer>

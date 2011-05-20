@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="group1_creationCompleteHandler(event)"
+		 width="100%"
+		 height="100%">
+
+	<!--
+		 网络拓扑
+	-->
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import spark.filters.GlowFilter;
+			
+
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				//this.defaultGlowToImage();
+				this.defaultEventToImage();
+			}
+			
+			/**
+			 * 初始化监听
+			 */
+			private function defaultEventToImage():void
+			{
+				var showImageArr:Array = this.getAllImage(this.imageGroup);
+				for(var i:int=0; i<showImageArr.length; i++)
+				{
+					var img:Image = showImageArr[i] as Image;
+					img.addEventListener(MouseEvent.MOUSE_OUT,imgMouseOutHandler,false,0,true);
+					img.addEventListener(MouseEvent.MOUSE_OVER,imgMouseOverHnaler,false,0,true);
+					img.addEventListener(MouseEvent.CLICK,clickHandler,false,0,true);
+				}
+			}
+			
+			/**
+			 * 鼠标移出
+			 */
+			protected function imgMouseOutHandler(event:MouseEvent):void
+			{
+				var img:Image = event.currentTarget as Image;
+				img.filters = [];
+			}
+			
+			/**
+			 * 鼠标移过
+			 */
+			protected function imgMouseOverHnaler(event:MouseEvent):void
+			{
+				var img:Image = event.currentTarget as Image;
+				img.filters = [this.createGlow()];
+			}
+			
+			/**
+			 * 鼠标点击
+			 */
+			protected function clickHandler(event:MouseEvent):void
+			{
+				var img:Image = event.currentTarget as Image;
+				if(img.filters.length == 0)
+				{
+					img.filters = [this.createGlow()];
+				}
+			}
+			
+			/**
+			 * 对图片增加默认的发光效果
+			 */
+			private function defaultGlowToImage():void
+			{
+				var showImageArr:Array = this.getAllImage(this.imageGroup);
+				for(var i:int=0; i<showImageArr.length; i++)
+				{
+					var img:Image = showImageArr[i] as Image;
+					
+				}
+			}
+			
+			/**
+			 * 创建发光效果
+			 */
+			private function createGlow():GlowFilter
+			{
+				var gf:GlowFilter = new GlowFilter();
+				gf.blurX = 20;
+				gf.blurY = 20;
+				gf.alpha = 1;
+				gf.color = 0xFFFFBE;
+				gf.knockout = false;
+				gf.quality = 1;
+				gf.strength = 1;
+				gf.inner = false;
+				
+				return gf;
+			}
+
+			/**
+			 * 取得所有显示图片
+			 */
+			private function getAllImage(group:Group):Array
+			{
+				if(!group) return [];
+				
+				var saveImage:Array = [];
+				
+				var num:int = group.numElements;
+				for(var i:int=0; i<num; i++)
+				{
+					saveImage.push(group.getElementAt(i));
+				}
+				
+				return saveImage;
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Group verticalCenter="0" horizontalCenter="0" id="imageGroup">
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="weixing" id="weixing" source="@Embed('/assets/image/topology/weixing.png')" x="4" y="213" height="107" width="241"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="wlan" id="wlan" source="@Embed('/assets/image/topology/wlan.png')" x="367" y="330"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="wuxian" id="wuxian" source="@Embed('/assets/image/topology/wuxian.png')" x="594" y="215"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="zhineng" id="zhineng" source="@Embed('/assets/image/topology/zhineng.png')" x="686" y="1"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="chuanshu" id="chuanshu" source="@Embed('/assets/image/topology/chuanshu.png')" x="335" y="215"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="cmnet" id="cmnet" source="@Embed('/assets/image/topology/cmnet.png')" x="22" y="1"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="dongli" id="dongli" source="@Embed('/assets/image/topology/dongli.png')" x="172" y="215"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="gprs" id="gprs" source="@Embed('/assets/image/topology/gprs.png')" x="512" y="1"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="ims" id="ims" source="@Embed('/assets/image/topology/ims.png')" x="679" y="329"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="ip" id="ip" source="@Embed('/assets/image/topology/ip.png')" x="0" y="106"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="jifang" id="jifang" source="@Embed('/assets/image/topology/jifang.png')" x="0" y="323"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="jike" id="jike" source="@Embed('/assets/image/topology/jike.png')" x="354" y="107"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="kexin" id="kexin" source="@Embed('/assets/image/topology/kexin.png')" x="232" y="0"/>
+		<mx:Image buttonMode="true" useHandCursor="true" toolTip="tongbu" id="tongbu" source="@Embed('/assets/image/topology/tongbu.png')" x="617" y="108"/>
+	</s:Group>
+
+	
+</s:Group>

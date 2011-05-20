@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns="com.hongguan.framework.view.subpage.*"
+		 creationComplete="creationCompleteHandler(event)"
+		 height="40"
+		 top="0"
+		 width="100%" >
+
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.event.ClickNavigatorTopMenuEvent;
+			import com.hongguan.framework.util.SysIconUtil;
+			
+			import mx.events.FlexEvent;
+			
+			/**网络资源*/
+			public static const RESOURCE:String = "RESOURCE";
+			/**业务开通*/
+			public static const BUSINESS:String = "BUSINESS";
+			/**网络拓扑*/
+			public static const TOPOLOGY:String = "TOPOLOGY";
+			/**网络割接*/
+			public static const CHOPUP:String = "CHOPUP";
+			/**管理视图*/
+			public static const MANAGE_VIEW:String = "MANAGE_VIEW";
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+			
+			}			
+			
+			/**
+			 * 点击生产视图按钮
+			 */
+			protected function produceBtn_clickHandler(event:Event):void
+			{
+				//this.produceView.visible = !this.produceView.visible
+				this.dispatchClickMenu(MANAGE_VIEW);
+			}
+			
+			/**
+			 * 网络资源
+			 */
+			protected function resource_clickHandler(event:MouseEvent):void
+			{
+				this.updateSelectedBgX(474);
+				this.dispatchClickMenu(RESOURCE);
+			}
+
+			/**
+			 * 业务开通
+			 */
+			protected function business_clickHandler(event:MouseEvent):void
+			{
+				this.updateSelectedBgX(369);
+				this.dispatchClickMenu(BUSINESS);
+			}
+
+			/**
+			 * 网络拓扑
+			 */
+			protected function topology_clickHandler(event:MouseEvent):void
+			{
+				this.updateSelectedBgX(175);
+				this.dispatchClickMenu(TOPOLOGY);
+			}
+			
+			/**
+			 * 网络割接
+			 */
+			protected function chopup_clickHandler(event:MouseEvent):void
+			{
+				this.updateSelectedBgX(269);
+				this.dispatchClickMenu(CHOPUP);
+			}
+
+			/**
+			 * 更改按钮背景显示位置
+			 */
+			private function updateSelectedBgX(value:Number):void
+			{
+				selectedBg.right = value;
+			}
+			
+			/**
+			 * 点击菜单广播事件
+			 */
+			private function dispatchClickMenu(type:String):void
+			{
+				var click:ClickNavigatorTopMenuEvent = new ClickNavigatorTopMenuEvent(ClickNavigatorTopMenuEvent.CLICK_MENU);
+				click.menuType = type;
+				
+				this.dispatchEvent(click);
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Metadata>
+		[Event(name="clickNavMenu",type="com.hongguan.framework.event.ClickNavigatorTopMenuEvent")]
+	</fx:Metadata>
+
+	<s:BitmapImage source="{SysIconUtil.navigatorBarImg}" width="100%"/>	
+	<s:BitmapImage source="{SysIconUtil.logo}" verticalCenter="0" left="15"/>
+	
+	<!--功能菜单-->
+	<s:BitmapImage source="{SysIconUtil.navigatorBarBtn}"  y="10" right="170" />
+	<s:BitmapImage  id="selectedBg" source="{SysIconUtil.btnSelected}" y="-3" right="474" />
+	
+	<mx:Button buttonMode="true" id="resource"  styleName="resource"  y="10" right="470" click="resource_clickHandler(event)"/>
+	<mx:Button buttonMode="true" id="business"  styleName="business"   y="8"  right="370"   click="business_clickHandler(event)"/>
+	<mx:Button buttonMode="true" id="chopup"   styleName="chopup"     y="10" right="270"  click="chopup_clickHandler(event)"/>
+	<mx:Button buttonMode="true" id="topology" styleName="topology"   y="10" right="170" click="topology_clickHandler(event)"/>
+
+	<mx:Button styleName="scstBtn" id="produceBtn" verticalCenter="0" right="15" buttonMode="true" click="produceBtn_clickHandler(event)"/>
+	
+	<!--ProduceView id="produceView"/>-->
+	
+</s:Group>

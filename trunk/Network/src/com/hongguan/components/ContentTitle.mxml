@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="group1_creationCompleteHandler(event)"
+		 width="100%"
+		 minHeight="26">
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+			
+			import flash.filters.DropShadowFilter;
+			
+			import mx.controls.Label;
+			import mx.events.FlexEvent;
+			
+			import spark.components.HGroup;
+			
+			private var _title:String;
+			
+
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				this.initContent(this.title);
+			}
+			
+			public function initContent(value:String = null):void
+			{
+				if(value== null || value.length == 0) return;
+				
+				if(value == "金牌" || value == "银牌" || value == "铜牌")
+				{
+					var group:HGroup = this.createGroup();
+					
+					if(value == "金牌") group.addElement(this.createBitmapImage(SysIconUtil.metal));
+					if(value == "银牌") group.addElement(this.createBitmapImage(SysIconUtil.silver));
+					if(value == "铜牌") group.addElement(this.createBitmapImage(SysIconUtil.copper));
+
+					var label:Label  = this.createTitle(value,14,false);
+					label.filters = [this.createDropShadowFilter()];
+					
+					group.addElement(label);
+					this.addElement(group);
+				}
+				else
+				{
+					var label_unit:Label  = this.createTitle(value);
+					label_unit.filters = [this.createDropShadowFilter()];
+					
+					this.addElement(label_unit);
+				}
+				
+			}
+
+			private function createTitle(text:String,fontSize:int=14,center:Boolean = true):Label
+			{
+				var label:Label  = new Label();
+				label.text = text;
+				label.maxWidth = 100;
+				label.minWidth = 5;
+				label.setStyle("color","#ABCCE1");
+				label.setStyle("fontSize",fontSize);
+				label.setStyle("fontFamily","黑体");
+				
+				if(center)
+				{
+					label.horizontalCenter = 0;
+					label.verticalCenter = -2;
+				}
+				
+				return label;
+			}
+			
+			private function createDropShadowFilter():Object
+			{
+				var dsf:DropShadowFilter = new DropShadowFilter();
+				dsf.angle = 45;
+				dsf.blurX = 4;
+				dsf.blurY = 4;
+				dsf.distance = 2;
+				dsf.alpha = 0.71;
+				dsf.color = 0x000000;
+				dsf.knockout = false;
+				dsf.quality = 1;
+				dsf.strength = 1;
+				dsf.inner = false;
+				dsf.hideObject = false;
+				
+				return dsf;
+			}
+			
+			private function createGroup():HGroup
+			{
+				var group:HGroup = new HGroup();
+				group.horizontalCenter = 0;
+				group.verticalCenter = 0;
+				
+				return group;
+			}
+			
+			private function createBitmapImage(source:Class):BitmapImage
+			{
+				var bi:BitmapImage = new BitmapImage();
+				bi.source = source;
+				
+				return bi;
+			}			
+			
+			[Bindable]
+			public function get title():String
+			{
+				return _title;
+			}
+			
+			public function set title(value:String):void
+			{
+				_title = value;
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:BitmapImage source="{SysIconUtil.business_box_title_2}"  left="0" right="0"/>
+	
+</s:Group>

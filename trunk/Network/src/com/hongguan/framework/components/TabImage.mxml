@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Image xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Script>
+		<![CDATA[
+			
+			private var _axisX:Number;
+			
+			private var _axisY:Number;
+			
+			public function get axisX():Number
+			{
+				return _axisX;
+			}
+
+			public function set axisX(value:Number):void
+			{
+				_axisX = value;
+			}
+
+			public function get axisY():Number
+			{
+				return _axisY;
+			}
+
+			public function set axisY(value:Number):void
+			{
+				_axisY = value;
+			}
+
+
+		]]>
+	</fx:Script>
+	
+</mx:Image>

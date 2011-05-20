@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  xmlns:components="com.hongguan.view.business.components.*"
+		  creationComplete="vgroup1_creationCompleteHandler(event)"
+		  width="100%"
+		  gap="2"
+		  height="100%">
+
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.components.Column;
+			import com.hongguan.components.ContentTitle;
+			
+			import mx.events.FlexEvent;
+
+			protected function vgroup1_creationCompleteHandler(event:FlexEvent):void
+			{
+				this.initRowTitle();
+			}
+			
+			private function initRowTitle():void
+			{		
+				var ct1:Column = new Column();
+				ct1.minHeightLabel = 18;
+				ct1.arrData =  ["      地区      ","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct1);
+				
+				var ct2:Column = new Column();
+				ct2.minHeightLabel = 18;
+				ct2.arrData =  ["HLR","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct2);
+				
+				var ct3:Column = new Column();
+				ct3.minHeightLabel = 18;
+				ct3.arrData = ["MSC","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct3);
+				
+				var ct4:Column = new Column();
+				ct4.minHeightLabel = 18;
+				ct4.arrData =  ["TMSC","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct4);
+				
+				var ct5:Column = new Column();
+				ct5.minHeightLabel = 18;
+				ct5.arrData =   ["GMSC","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct5);
+				
+				var ct6:Column = new Column();
+				ct6.minHeightLabel = 18;
+				ct6.arrData =   ["MGW","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct6);
+				
+				var ct7:Column = new Column();
+				ct7.minHeightLabel = 18;
+				ct7.arrData =  ["GMGW","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct7);
+				
+				var ct8:Column = new Column();
+				ct8.minHeightLabel = 18;
+				ct8.arrData = ["MSC SERVER","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct8);
+				
+				var ct9:Column = new Column();
+				ct9.minHeightLabel = 18;
+				ct9.arrData =["TMSC SERVER","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct9);
+				
+				var ct10:Column = new Column();
+				ct10.minHeightLabel = 18;
+				ct10.arrData =["GMSC SERVER","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct10);
+				
+				var ct11:Column = new Column();
+				ct11.minHeightLabel = 18;
+				ct11.arrData =["TBSC","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct11);
+				
+				var ct12:Column = new Column();
+				ct12.minHeightLabel = 18;
+				ct12.arrData =["RNC","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct12);
+				
+				var ct13:Column = new Column();
+				ct13.minHeightLabel = 18;
+				ct13.arrData =["总计","A","B","C","D","E","F","G","H","I","J","K","L"];
+				this.addElement(ct13);
+				
+			}
+
+		]]>
+	</fx:Script>
+
+</s:HGroup>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009"
+		   xmlns:s="library://ns.adobe.com/flex/spark"
+		   xmlns:mx="library://ns.adobe.com/flex/mx"
+		   showEffect="WipeDown"
+		   hideEffect="WipeUp"
+		   visible="false"
+		   right="15"
+		   top="35"
+		   width="180"
+		   height="228">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+		]]>
+	</fx:Script>
+
+	<mx:Image source="{SysIconUtil.produceView}"/>
+
+	<s:Label buttonMode="true"  styleName="whiteLabel" text="个人工作台" x="38" y="44" />
+	<s:Label buttonMode="true"  styleName="whiteLabel" text="资源维护"    x="38" y="74" />
+	<s:Label buttonMode="true"  styleName="whiteLabel" text="数据质量"    x="38" y="103" />
+	<s:Label buttonMode="true"  styleName="whiteLabel" text="资源建模"    x="38" y="134" />
+	<s:Label buttonMode="true"  styleName="whiteLabel" text="资源命名模" x="38" y="163" />
+	<s:Label buttonMode="true"  styleName="whiteLabel" text="应用统计"    x="38" y="192" />
+
+</mx:Canvas>

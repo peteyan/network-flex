@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  xmlns="com.hongguan.framework.view.*"
+		  xmlns:subpage="com.hongguan.view.chopup.subpage.*"
+		  gap="20"
+		  width="100%"
+		  height="100%">
+
+	<!--
+		 网络割接
+	-->
+
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.framework.util.SysIconUtil;
+			
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+
+
+		]]>
+	</fx:Script>
+
+	<s:Group width="100%" height="45%">
+		
+		<ContainerBox id="chopupOne" contentTop="15" top="9"  left="0" width="400" height="100%"  minHeight="276" name="软交换割接数量统计图" titleImg="{SysIconUtil.cant}" >
+			<content>
+				<subpage:SoftExchange/>
+			</content>
+		</ContainerBox>
+		
+		<ContainerBox id="chopupTwo" left="{chopupOne.width + 15}" minWidth="750"  right="0" height="100%"  name="软交换规模图">
+			<content>
+				<subpage:SoftExchangeScope/>
+			</content>
+		</ContainerBox>
+		
+	</s:Group>
+
+	<s:Group width="100%" height="45%" >
+		
+		<ContainerBox id="chopupThree" contentTop="15"  top="9" width="400" height="100%" minHeight="276" name="基站割接数量统计图"  titleImg="{SysIconUtil.cant}">
+			<content>
+				<subpage:StationCut/>
+			</content>
+		</ContainerBox>
+		
+		<ContainerBox id="chopupFour" left="{chopupOne.width + 15}" right="0" height="100%" name="基站规模图">
+			<content>
+				<subpage:StationScope/>
+			</content>
+		</ContainerBox>
+		
+	</s:Group>
+
+</s:VGroup>

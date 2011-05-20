@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	
+	<mx:Script>
+		<![CDATA[
+			import flash.display.Sprite;
+			
+			private function addMask():void
+			{
+				var mask:Sprite = new Sprite();
+				with (mask.graphics)
+				{
+					clear();
+					lineStyle(0, 0x000000, 0);
+					beginFill(0x000000, 1);
+					drawRoundRect(0, 0, grid.width, grid.height, 16, 16);
+					endFill();
+				}
+				grid.addChild(mask);
+				grid.mask = mask;
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:VBox backgroundAlpha="0" cornerRadius="8" borderStyle="solid" borderColor="0x000000">
+		<mx:DataGrid id="grid" width="400" height="280"  creationComplete="addMask()">
+			<mx:columns>
+				<mx:DataGridColumn headerText="ID" />
+				<mx:DataGridColumn headerText="Name" />
+				<mx:DataGridColumn headerText="Description" />
+			</mx:columns>
+		</mx:DataGrid>
+	</mx:VBox>
+	
+</mx:Application>
+

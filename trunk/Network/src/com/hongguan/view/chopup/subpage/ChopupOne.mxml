@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  xmlns:components="com.hongguan.view.business.components.*"
+		  creationComplete="vgroup1_creationCompleteHandler(event)"
+		  width="100%"
+		  gap="2"
+		  height="100%">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.hongguan.components.Column;
+			import com.hongguan.components.ContentTitle;
+			
+			import mx.events.FlexEvent;
+			
+			protected function vgroup1_creationCompleteHandler(event:FlexEvent):void
+			{
+				this.initRowTitle();
+			}
+			
+			private function initRowTitle():void
+			{		
+				var st1:Column = new Column();
+				st1.minHeightLabel = 18;
+				st1.arrData =  ["月份","1","2","3","4","5","6","7","8","9","10","11","12"];
+				this.addElement(st1);
+				
+				var st2:Column = new Column();
+				st2.minHeightLabel = 18;
+				st2.arrData =  ["新增入网软交换设备量","1","2","3","4","5","6","7","8","9","10","11","12"];
+				this.addElement(st2);
+				
+				var st3:Column = new Column();
+				st3.minHeightLabel = 18;
+				st3.arrData = ["调整软交换设备数据","1","2","3","4","5","6","7","8","9","10","11","12"];
+				this.addElement(st3);
+				
+				var st4:Column = new Column();
+				st4.minHeightLabel = 18;
+				st4.arrData =  ["退网软交换设备数量","1","2","3","4","5","6","7","8","9","10","11","12"];
+				this.addElement(st4);
+			}
+			
+		]]>
+	</fx:Script>
+	
+</s:HGroup>

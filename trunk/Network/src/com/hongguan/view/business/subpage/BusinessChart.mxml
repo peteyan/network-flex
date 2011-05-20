@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 creationComplete="vgroup1_creationCompleteHandler(event)"
+		 top="53"
+		 width="100%"
+		 height="100%">
+	
+	<fx:Script>
+		<![CDATA[          
+			import com.hongguan.util.json.JSON;
+			import com.hongguan.view.business.components.BusinessChartOneColumn;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;	
+			import mx.controls.Alert;
+			[Bindable]
+			private var medalsAC:ArrayCollection = new ArrayCollection( [
+				{ Country: "1月", Gold: 35, Silver:39, Bronze: 29 },
+				{ Country: "2月", Gold: 32, Silver:17, Bronze: 14 },
+				{ Country: "3月", Gold: 27, Silver:27, Bronze: 38 },
+				{ Country: "4月", Gold: 35, Silver:39, Bronze: 29 },
+				{ Country: "5月", Gold: 32, Silver:17, Bronze: 14 },
+				{ Country: "6月", Gold: 27, Silver:27, Bronze: 38 },
+				{ Country: "7月", Gold: 35, Silver:39, Bronze: 29 },
+				{ Country: "8月", Gold: 32, Silver:17, Bronze: 14 },
+				{ Country: "9月", Gold: 27, Silver:27, Bronze: 38 },
+				{ Country: "10月", Gold: 35, Silver:39, Bronze: 29 },
+				{ Country: "11月", Gold: 32, Silver:17, Bronze: 14 },
+				{ Country: "12月", Gold: 27, Silver:27, Bronze: 38 }
+			]);
+			
+			protected function vgroup1_creationCompleteHandler(event:FlexEvent):void
+			{
+				//this.initRowTitle();
+				RObusinessService.getAllServiceServDevelop();
+			}
+			
+			private function initRowTitle():void
+			{		
+				var c1:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c1.arrData = ["一月","200"];
+				this.title_cloumn.addElement(c1);
+				
+				var c2:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c2.arrData = ["二月","300"];
+				this.title_cloumn.addElement(c2);
+				
+				var c3:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c3.arrData = ["三月","400"];
+				this.title_cloumn.addElement(c3);
+				
+				var c4:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c4.arrData = ["四月","500"];
+				this.title_cloumn.addElement(c4);
+				
+				var c5:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c5.arrData = ["五月","600"];
+				this.title_cloumn.addElement(c5);
+				
+				var c6:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c6.arrData = ["六月","700"];
+				this.title_cloumn.addElement(c6);
+				
+				var c7:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c7.arrData = ["七月","800"];
+				this.title_cloumn.addElement(c7);
+				
+				var c8:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c8.arrData = ["八月","900"];
+				this.title_cloumn.addElement(c8);
+				
+				var c9:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c9.arrData = ["九月","1000"];
+				this.title_cloumn.addElement(c9);
+				
+				var c10:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c10.arrData = ["十月","1100"];
+				this.title_cloumn.addElement(c10);
+				
+				var c11:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c11.arrData = ["十一月","1200"];
+				this.title_cloumn.addElement(c11);
+				
+				var c12:BusinessChartOneColumn = new BusinessChartOneColumn();
+				c12.arrData = ["十二月","1300"];
+				this.title_cloumn.addElement(c12);
+				
+			}
+			/**
+			 * 获取获取业务开通-业务发展图数据 --success执行的方法
+			 */
+			private function getAllServiceServDevelop_resultHandler(event:ResultEvent):void
+			{
+				var rawArray:Array=JSON.decode(event.result as String) as Array;
+				businessChart.dataProvider=rawArray;
+				
+				var month:String;
+				var actservice:String;
+				for(var i:int=0;i<rawArray.length;i++){
+					month=rawArray[i].month;//月份
+					actservice=rawArray[i].actservice;//实际完成值
+					var c1:BusinessChartOneColumn = new BusinessChartOneColumn();
+					c1.arrData = [month,actservice];
+					this.title_cloumn.addElement(c1);
+				}
+				
+				
+			}			
+			/**
+			 *  与后台交互，出现异常调用
+			 */
+			protected function faultHandler(event:FaultEvent):void
+			{
+				Alert.show("come in  faultHandler--------!"+event.message);
+				//				PopUpUtils.messageBox("连接异常，请与管理员联系","提示");
+			}			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!--获取获取业务开通-业务发展图数据 -->
+		<s:RemoteObject id="RObusinessService" destination="businessService" showBusyCursor="true" requestTimeout="30">
+			<s:method name="getAllServiceServDevelop" result="getAllServiceServDevelop_resultHandler(event)" fault="faultHandler(event)"/>
+		</s:RemoteObject>		
+		<!-- Define custom colors for use as fills. -->
+		<mx:SolidColor id="sc1" color="yellow" alpha=".8"/>
+		<mx:SolidColor id="sc2" color="0xCCCCCC" alpha=".6"/>
+		
+		<!-- Define custom Strokes for the columns. -->
+		<s:SolidColorStroke id="s1" color="yellow" weight="2"/>
+		<s:SolidColorStroke id="s2" color="0xCCCCCC" weight="2"/>	
+
+	</fx:Declarations>
+	
+	<s:HGroup  id="title_cloumn" width="100%" height="40" gap="2"/>
+
+	<mx:ColumnChart id="businessChart" paddingLeft="5"  fontSize="13" paddingRight="5" 
+					showDataTips="true"  bottom="20" top="45"  width="100%">                
+	
+		<mx:horizontalAxis>
+			<mx:CategoryAxis categoryField="month"/>
+		</mx:horizontalAxis>
+		
+		<mx:series>
+			<mx:ColumnSeries xField="month" yField="actservice" displayName="actservice" fill="{sc1}"	stroke="{s1}"/>
+			<mx:ColumnSeries xField="month" yField="planservice" displayName="planservice" fill="{sc2}" stroke="{s2}"/>
+		</mx:series>
+	</mx:ColumnChart>
+	
+	<mx:Legend dataProvider="{businessChart}" id="legend" fontSize="25" bottom="10" left="0" height="18"/>
+	
+</s:Group>
